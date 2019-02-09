@@ -3,16 +3,16 @@ distance <- function(X, medians){
   #
   # Parameters
   # ----------
-  # x: 2D array
+  # x: matrix
   # The dataset being clustered
   #
-  # medians: 2D array
+  # medians: matrix
   # Medians of the clusters
   #
   # Returns
   # -------
-  # dist: 2D array
+  # dist: matrix
   # Distance between each point and each median
 
-  return (0)
+  return (matrix)
 }

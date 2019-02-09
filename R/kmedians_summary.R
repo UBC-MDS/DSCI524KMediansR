@@ -1,4 +1,4 @@
-summary <- function(medians, labels){
+summary <- function(X, medians, labels){
   # Generates a table to display the cluster labels, the coordinates of the cluster medians,
   # number of points in each cluster, the average distance within the cluster,
   # the maximum distance within the cluster and the minimum distance within the cluster.
@@ -6,10 +6,14 @@ summary <- function(medians, labels){
   #
   # Parameters
   # ----------
-  # medians: 2D array
+  #
+  # X: matrix
+  # The dataset being clustered
+  #
+  # medians: matrix
   # Coordinates of each cluster median
   #
-  # labels:  1D array
+  # labels:  list
   # Array with the assignment of the cluster for each point in the dataset
   #
   # Returns

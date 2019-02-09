@@ -5,7 +5,7 @@ kmedians <- function(X, num_clusters){
   #
   # Parameters
   # ----------
-  # X: 2D array
+  # X: matrix
   # The dataset being clustered
   #
   # num_clusters: integer
@@ -13,11 +13,13 @@ kmedians <- function(X, num_clusters){
   #
   # Returns
   # -------
-  # medians: 2D array
-  # The coordinates of the medians for each cluster
+  # List contains both medians and labels :
   #
-  # labels: 1D array
-  # Array that has the assignment of the cluster for each point in the dataset
+  #   medians: matrix
+  #   The coordinates of the medians for each cluster
+  #
+  #   labels: list
+  #   List that has the assignment of the cluster for each point in the dataset
 
 
   return (0)

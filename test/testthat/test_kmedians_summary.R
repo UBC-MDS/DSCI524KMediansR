@@ -22,66 +22,74 @@ A <- matrix(
   ncol = 2,
   byrow = TRUE)
 
+m <- matrix(
+  c(1,1,100,100),
+  nrow = 2,
+  ncol = 2,
+  byrow = TRUE)
+
+l <- c(0,0,0,1,1,1)
+
 test_that("test if output is a dataframe given toy data", {
 
-  expect_equal(is.data.frame(summary(X = A, medians, labels)), TRUE)
+  expect_equal(is.data.frame(summary(X = A, medians = m, labels = l)), TRUE)
 
 })
 
 test_that("test if number of clusters is correct", {
 
-  expect_equal(nrow(summary(X = A, medians, labels))),2)
+  expect_equal(nrow(summary(X = A, medians = m, labels = l)), 2)
 
 })
 
 test_that("test if the labels are correct", {
 
-  expect_equal(summary(X = A, medians, labels)[1,1],c(0,0,0))
+  expect_equal(summary(X = A, medians = m, labels = l)[1,1],0)
 
-  expect_equal(summary(X = A, medians, labels)[2,1],c(1,1,1))
+  expect_equal(summary(X = A, medians = m, labels = l)[2,1],1)
 
 })
 
 test_that("test if the reported Median Coordinates are correct", {
 
-  expect_equal(summary(X = A, medians, labels)[1,2],c(1,1))
+  expect_equal(summary(X = A, medians = m, labels = l)[1,2],c(1,1))
 
-  expect_equal(summary(X = A, medians, labels)[2,2],c(100,100))
+  expect_equal(summary(X = A, medians = m, labels = l)[2,2],c(100,100))
 
 })
 
 
 test_that("test if the numbers of data points in each cluster are correct", {
 
-  expect_equal(summary(X = A, medians, labels)[1,3],3)
+  expect_equal(summary(X = A, medians = m, labels = l)[1,3],3)
 
-  expect_equal(summary(X = A, medians, labels)[2,3],3)
+  expect_equal(summary(X = A, medians = m, labels = l)[2,3],3)
 
 })
 
 
 test_that("test if the average distance within each cluster is correct", {
 
-  expect_equal(summary(X = A, medians, labels)[1,4],4/3)
+  expect_equal(summary(X = A, medians = m, labels = l)[1,4],2/3)
 
-  expect_equal(summary(X = A, medians, labels)[2,4],4/3)
+  expect_equal(summary(X = A, medians = m, labels = l)[2,4],2/3)
 
 })
 
 test_that("test if the minimum distance within each cluster is correct", {
 
-  expect_equal(summary(X = A, medians, labels)[1,5],1)
+  expect_equal(summary(X = A, medians = m, labels = l)[1,5], 0)
 
-  expect_equal(summary(X = A, medians, labels)[2,5],1)
+  expect_equal(summary(X = A, medians = m, labels = l)[2,5], 0)
 
 })
 
 
 test_that("test if the maximum distance within each cluster is correct", {
 
-  expect_equal(summary(X = A, medians, labels)[1,6],2)
+  expect_equal(summary(X = A, medians = m, labels = l)[1,6], 1)
 
-  expect_equal(summary(X = A, medians, labels)[2,6],2)
+  expect_equal(summary(X = A, medians = m, labels = l)[2,6], 1)
 
 })
 

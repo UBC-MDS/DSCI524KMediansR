@@ -24,3 +24,4 @@ This repository has been created for a course project and may not be monitored a
 ------
 
 By contributing to this project you agree to abide by the [Code of Conduct](https://github.com/UBC-MDS/DSCI524KMediansR/blob/master/CONDUCT.md) and the terms of the Licence.
+

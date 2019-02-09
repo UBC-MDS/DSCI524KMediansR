@@ -92,10 +92,14 @@ test_that("test size of output given toy data", {
 
 test_that("test if the medians and clustering given toy data are correct", {
 
-  expect_equal(kmedians(X = A, num_clusters = n)[[1]][1,], c(1,1))
+  expect_equal(match(kmedians(X = A, num_clusters = n)[[1]],1), 2)
 
-  expect_equal(kmedians(X = A, num_clusters = n)[[1]][2,], c(100,100))
+  expect_equal(match(kmedians(X = A, num_clusters = n)[[1]],100), 2)
 
-  expect_equal(kmedians(X = A, num_clusters = n)[2], c(0,0,0,1,1,1))
+  expect_equal(length(unique(kmedians(X = A, num_clusters = n)[[2]])), 2)
+
+  expect_equal(match(kmedians(X = A, num_clusters = n)[[2]],0), 3)
+
+  expect_equal(match(kmedians(X = A, num_clusters = n)[[2]],1), 3)
 
 })

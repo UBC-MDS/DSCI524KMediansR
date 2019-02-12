@@ -21,10 +21,10 @@ distance <- function(X, medians){
   
   for (k in 1:K) {
     for (i in 1:n){
-      matrix[i,k] <- abs(X[i,1]-medians[k,1])+abs(X[i,2]-medians[k,2])
+      dist[i,k] <- abs(X[i,1]-medians[k,1])+abs(X[i,2]-medians[k,2])
     }
   }  
   
-  return (matrix)
+  return (dist)
 }
 

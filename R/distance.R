@@ -28,6 +28,3 @@ distance <- function(X, medians){
   return (matrix)
 }
 
-  
-  return (matrix)
-}

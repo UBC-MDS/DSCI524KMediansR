@@ -17,7 +17,7 @@ distance <- function(X, medians){
   K = ncol(medians)
   n = nrow(X)
   
-  matrix<- matrix(nrow=n,ncol=K)
+  dist<- matrix(nrow=n,ncol=K)
   
   for (k in 1:K) {
     for (i in 1:n){

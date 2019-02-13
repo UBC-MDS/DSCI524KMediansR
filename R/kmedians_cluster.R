@@ -12,6 +12,9 @@ kmedians <- function(X, num_clusters, n_it=100){
   # num_clusters: integer
   # The desired number of clusters
   #
+  # n_it: integer
+  # The number of loops. Default value is 100.
+  #
   # Returns
   # -------
   # List contains both medians and labels :
@@ -38,5 +41,6 @@ kmedians <- function(X, num_clusters, n_it=100){
       medians[k,] = apply((matrix(X[u[k,]==1],ncol=2)), 2, median)
     }
   }
+  # make the output as a list
   return(list(medians,labels))
 }

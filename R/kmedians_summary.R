@@ -27,7 +27,7 @@ summary <- function(X, medians, labels){
   medians_df <- data.frame(cbind(unique(labels),medians))
   colnames(medians_df) <- c("label", "medianX", "medianY")
 
-  summary_df <- data.frame(cbind(A,labels))
+  summary_df <- data.frame(cbind(X,labels))
   colnames(summary_df) <- c("X","Y","label")
 
   summary_df <- summary_df %>%

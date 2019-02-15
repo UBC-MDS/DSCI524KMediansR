@@ -1,17 +1,15 @@
-# kmedians_cluster tests
-#
-# Testing includes:
-# - checks errors of the missing input
-# - checks errors of the datatype of the input
-# - checks if num_clusters is larger than the data rows
-# - checks the datatype of the output
-# - checks the size of the output
-# - correct medians and clustering of the toy example
-
-
-library(KMediansR)
+#' kmedians_cluster tests
+#'
+#' Testing includes:
+#'  checks errors of the missing input
+#'  checks errors of the datatype of the input
+#'  checks if num_clusters is larger than the data rows
+#'  checks the datatype of the output
+#'  checks the size of the output
+#'  correct medians and clustering of the toy example
 
 context("testing kmedians clustering")
+
 
 # toy data for calculation
 A <- matrix(

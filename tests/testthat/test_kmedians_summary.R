@@ -1,17 +1,15 @@
-# kmedians_summary tests
-#
-# Testing includes:
-# - checks the datatype of the output
-# - check if the number of clusters is correct
-# - check if the labels are correct
-# - check if the reported Median Coordinates are correct
-# - check if the numbers of data points in each cluster are correct
-# - check if the average distance within each cluster is correct
-# - check if the minimum distance within each cluster is correct
-# - check if the maximum distance within each cluster is correct
+#' kmedians_summary tests
+#'
+#' Testing includes:
+#'  checks the datatype of the output
+#'  check if the number of clusters is correct
+#'  check if the labels are correct
+#'  check if the reported Median Coordinates are correct
+#'  check if the numbers of data points in each cluster are correct
+#'  check if the average distance within each cluster is correct
+#'  check if the minimum distance within each cluster is correct
+#'  check if the maximum distance within each cluster is correct
 
-
-library(KMediansR)
 
 context("testing summary")
 

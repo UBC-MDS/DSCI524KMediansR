@@ -50,9 +50,9 @@ test_that("test if the labels are correct", {
 
 test_that("test if the reported Median Coordinates are correct", {
 
-  expect_equal(summary(X = A, medians = m, labels = l)[1,2],c(1,1))
+  expect_equal(summary(X = A, medians = m, labels = l)[1,2],c("1,1"))
 
-  expect_equal(summary(X = A, medians = m, labels = l)[2,2],c(100,100))
+  expect_equal(summary(X = A, medians = m, labels = l)[2,2],c("100,100"))
 
 })
 

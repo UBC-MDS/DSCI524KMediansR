@@ -13,7 +13,6 @@
 #' @export
 #'
 #' @examples
-#' summary(A,matrix,list)
 #'
 summary <- function(X, medians, labels){
 

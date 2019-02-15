@@ -27,7 +27,8 @@ This function uses random intilization to assign the first medians and then will
 the group assignments until the assignment does not change.
 }
 \examples{
-kmedians(A,2,n_it=100)
+
+
 
 
 }

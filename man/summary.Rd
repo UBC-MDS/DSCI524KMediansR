@@ -23,6 +23,5 @@ number of points in each cluster, the average distance within the cluster,
 the maximum distance within the cluster and the minimum distance within the cluster.
 }
 \examples{
-summary(A,matrix,list)
 
 }

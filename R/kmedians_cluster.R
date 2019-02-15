@@ -17,7 +17,8 @@
 #' @export
 #'
 #' @examples
-#' kmedians(A,2,n_it=100)
+#'
+#'
 #'
 #'
 kmedians <- function(X, num_clusters,n_it=100){

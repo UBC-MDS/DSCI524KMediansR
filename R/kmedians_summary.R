@@ -1,7 +1,7 @@
 #' summary
 #'
 #' Generates a table to display the cluster labels, the coordinates of the cluster medians,
-#' number of points in each cluster, the average distance within the cluster,
+#' number of pusoints in each cluster, the average distance within the cluster,
 #' the maximum distance within the cluster and the minimum distance within the cluster.
 #'
 #' @param X matrix,the dataset being clustered

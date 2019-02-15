@@ -35,6 +35,8 @@ kmedians <- function(X, num_clusters,n_it=100){
     K <- nrow(medians)
     N <- nrow(X)
 
+    old_medians <- medians
+
     dist <- matrix(nrow=N,ncol=K)
 
     for (k in 1:K) {
@@ -51,6 +53,10 @@ kmedians <- function(X, num_clusters,n_it=100){
 
     for (k in 1:num_clusters){
       medians[k,] = apply((matrix(X[u[k,]==1],ncol=2)), 2, median)
+    }
+
+    if (identical(medians,old_medians)){
+      break
     }
   }
   # make the output as a list

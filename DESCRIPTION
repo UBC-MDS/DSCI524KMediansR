@@ -14,3 +14,4 @@ Description: In k-medians clustering, we partition n observations into k cluster
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1

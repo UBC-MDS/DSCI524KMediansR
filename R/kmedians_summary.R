@@ -1,27 +1,29 @@
-summary <- function(X, medians, labels){
-  # Generates a table to display the cluster labels, the coordinates of the cluster medians,
-  # number of points in each cluster, the average distance within the cluster,
-  # the maximum distance within the cluster and the minimum distance within the cluster.
-  #
+distance <- function(X, medians){
+  # Calculates the Manhanttan distance between the medians and every point in the dataset
   #
   # Parameters
   # ----------
-  #
-  # X: matrix
+  # x: matrix
   # The dataset being clustered
   #
   # medians: matrix
-  # Coordinates of each cluster median
-  #
-  # labels:  list
-  # Array with the assignment of the cluster for each point in the dataset
+  # Medians of the clusters
   #
   # Returns
   # -------
-  # dataframe
-  # Returns a dataframe with 6 columns and number of rows will be the number of clusters. The labels of the columns:
-  # Cluster labels, Median Coordinates, Number of Points in Cluster, Average Distance, Minimum Distance, Maximum Distance
+  # dist: matrix
+  # Distance between each point and each median
 
+  K <- nrow(medians)
+  n <- nrow(X)
 
-  return (0)
+  dist <- matrix(nrow=n,ncol=K)
+
+  for (k in 1:K) {
+    for (i in 1:n){
+      dist[i,k] <- abs(X[i,1]-medians[k,1])+abs(X[i,2]-medians[k,2])
+    }
+  }
+
+  return (dist)
 }

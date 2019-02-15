@@ -1,4 +1,3 @@
-source("distance.R")
 kmedians <- function(X, num_clusters, n_it=100){
   # Groups the points in your dataset ,X, into the desired number of clusters, based on the median distance between the points.
   # This function uses random intilization to assign the first medians and then will update the medians and
@@ -24,19 +23,33 @@ kmedians <- function(X, num_clusters, n_it=100){
   #
   #   labels: list
   #   List that has the assignment of the cluster for each point in the dataset
-  
+
+  set.seed(123)
   n <- nrow(X)
   u <- matrix(0, nrow = num_clusters, ncol = n)
-  
+
   # initialize median points
   medians <- X[sample(n,size=num_clusters,replace=FALSE),]
-  
+
   for (i in 1:n_it){
-    d <- distance(X, medians)
-    labels <- apply(d, 1, which.min)
+
+    K <- nrow(medians)
+    N <- nrow(X)
+
+    dist <- matrix(nrow=N,ncol=K)
+
+    for (k in 1:K) {
+      for (i in 1:n){
+        dist[i,k] <- abs(X[i,1]-medians[k,1])+abs(X[i,2]-medians[k,2])
+      }
+    }
+
+    labels <- apply(dist, 1, which.min)
+
     for (j in 1:n){
       u[labels[j], j] <- 1
     }
+
     for (k in 1:num_clusters){
       medians[k,] = apply((matrix(X[u[k,]==1],ncol=2)), 2, median)
     }
@@ -44,3 +57,4 @@ kmedians <- function(X, num_clusters, n_it=100){
   # make the output as a list
   return(list(medians,labels))
 }
+

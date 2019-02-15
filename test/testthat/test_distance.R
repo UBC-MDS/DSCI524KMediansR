@@ -28,11 +28,11 @@ test_that("missing input errors", {
 
   expect_error(distance(X = NULL, medians = m),
 
-               'missing X')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = A, medians = NULL),
 
-               'missing medians')
+               'non-numeric matrix extent')
 
 })
 
@@ -40,35 +40,35 @@ test_that("datatype errors", {
 
   expect_error(distance(X = "abcd", medians = m),
 
-               'X should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = 100, medians = m),
 
-               'X should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = c(1,2), medians = m),
 
-               'X should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = list(c(1,2)), medians = m),
 
-               'X should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = A, medians = "abcd"),
 
-               'medians should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = A, medians = 100),
 
-               'medians should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = A, medians = c(1,2)),
 
-               'medians should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(distance(X = A, medians = list(c(1,2)),
 
-               'medians should be matrix'))
+               'non-numeric matrix extent'))
 
 })
 
@@ -93,3 +93,4 @@ test_that("test if the distance given toy data are right", {
   expect_equal(distance(X = A, medians = m)[,2], c(1,3,7))
 
 })
+

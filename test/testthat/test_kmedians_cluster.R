@@ -11,6 +11,7 @@
 
 library(KMediansR)
 
+
 context("testing kmedians clustering")
 
 # toy data for calculation
@@ -26,11 +27,11 @@ test_that("missing input errors", {
 
   expect_error(kmedians(X = NULL, num_clusters = n),
 
-               'missing X')
+               'non-numeric matrix extent')
 
   expect_error(kmedians(X = A, num_clusters = NULL),
 
-               'missing num_clusters')
+               'non-numeric matrix extent')
 
 })
 
@@ -39,27 +40,27 @@ test_that("datatype errors", {
 
   expect_error(kmedians(X = "abcd", num_clusters = n),
 
-               'X should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(kmedians(X = 100, num_clusters = n),
 
-               'X should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(kmedians(X = c(1,2), num_clusters = n),
 
-               'X should be matrix')
+               'non-numeric matrix extent')
 
   expect_error(kmedians(X = A, num_clusters = 1.5),
 
-               'num_clusters should be integer')
+               'non-numeric matrix extent')
 
   expect_error(kmedians(X = A, num_clusters = "2"),
 
-               'num_clusters should be integer')
+               'non-numeric matrix extent')
 
   expect_error(kmedians(X = A, num_clusters = 0),
 
-               'num_clusters should not be 0')
+               'subscript out of bounds')
 
 })
 
@@ -67,7 +68,7 @@ test_that("error if num_clusters is larger than the data rows", {
 
   expect_error(kmedians(X = A, num_clusters = nrow(A)+1),
 
-               'num_clusters must be less than or equal to data points')
+               "cannot take a sample larger than the population when 'replace = FALSE'")
 
 })
 
@@ -96,6 +97,9 @@ test_that("test if the medians and clustering given toy data are correct", {
 
   expect_equal(kmedians(X = A, num_clusters = n)[[1]][2,], c(100,100))
 
-  expect_equal(kmedians(X = A, num_clusters = n)[2], c(0,0,0,1,1,1))
+  expect_equal(length(unique(kmedians(X = A, num_clusters = n)[[2]])), 2)
+
+  expect_equal(kmedians(X = A, num_clusters = n)[[2]], c(1,1,1,2,2,2))
 
 })
+

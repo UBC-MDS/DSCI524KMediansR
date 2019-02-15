@@ -2,14 +2,10 @@
 % Please edit documentation in R/KMediansR-package.R
 \docType{package}
 \name{KMediansR-package}
-\alias{KMediansR}
 \alias{KMediansR-package}
-\title{KMediansR: K-Medians Clustering}
+\title{KMediansR}
 \description{
-In k-medians clustering, we partition n observations into k clusters. It calculates the median (using the Manhattan distance) for each cluster to determine its centroid. The kmedians package performs k-medians clustering on the dataset entered by the users and returns the clustered data.
+In k-medians clustering, we partition n observations into k clusters.
+It calculates the median (using the Manhattan distance) for each cluster to determine its centroid.
+The kmedians package performs k-medians clustering on the dataset entered by the users and returns the clustered data.
 }
-\author{
-\strong{Maintainer}: Fan Nie \email{jamienie@gmail.com}
-
-}
-\keyword{internal}

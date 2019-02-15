@@ -1,12 +1,20 @@
 Package: KMediansR
-Title: What the Package Does (One Line, Title Case)
+Title: K-Medians Clustering
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Fan",
+           family = "Nie",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "jamienie@gmail.com")      
+Description: In k-medians clustering, we partition n observations into k clusters. It calculates the median (using the Manhattan distance) for each cluster to determine its centroid. The kmedians package performs k-medians clustering on the dataset entered by the users and returns the clustered data.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+Imports: 
+    dplyr
+VignetteBuilder: knitr

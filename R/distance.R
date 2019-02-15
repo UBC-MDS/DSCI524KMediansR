@@ -14,10 +14,10 @@ distance <- function(X, medians){
   # dist: matrix
   # Distance between each point and each median
 
-  K = ncol(medians)
+  K = nrow(medians)
   n = nrow(X)
   
-  matrix<- matrix(nrow=n,ncol=K)
+  dist<- matrix(nrow=n,ncol=K)
   
   for (k in 1:K) {
     for (i in 1:n){
@@ -27,4 +27,6 @@ distance <- function(X, medians){
   
   return (dist)
 }
+
+
 

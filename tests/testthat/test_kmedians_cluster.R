@@ -1,18 +1,15 @@
-# kmedians_cluster tests
-#
-# Testing includes:
-# - checks errors of the missing input
-# - checks errors of the datatype of the input
-# - checks if num_clusters is larger than the data rows
-# - checks the datatype of the output
-# - checks the size of the output
-# - correct medians and clustering of the toy example
-
-
-library(KMediansR)
-
+#' kmedians_cluster tests
+#'
+#' Testing includes:
+#'  checks errors of the missing input
+#'  checks errors of the datatype of the input
+#'  checks if num_clusters is larger than the data rows
+#'  checks the datatype of the output
+#'  checks the size of the output
+#'  correct medians and clustering of the toy example
 
 context("testing kmedians clustering")
+
 
 # toy data for calculation
 A <- matrix(
@@ -84,22 +81,21 @@ test_that("test size of output given toy data", {
 
   expect_equal(length(kmedians(X = A, num_clusters = n)), 2)
 
-  expect_equal(nrow(kmedians(X = A, num_clusters = n)[[1]]), n)
+  expect_equal(nrow(kmedians(X = A, num_clusters = n)[[1]]), 2)
   # number of medians equals to number of clusters
 
-  expect_equal(lengths(kmedians(X = A, num_clusters = n)[2]), nrow(A))
+  expect_equal(length(kmedians(X = A, num_clusters = n)[[2]]), 6)
   # number of labels equals to number of data points
 })
 
 test_that("test if the medians and clustering given toy data are correct", {
 
-  expect_equal(kmedians(X = A, num_clusters = n)[[1]][1,], c(1,1))
+  expect_equal(kmedians(X = A, num_clusters = n)[[1]][1,1],1)
 
-  expect_equal(kmedians(X = A, num_clusters = n)[[1]][2,], c(100,100))
+  expect_equal(kmedians(X = A, num_clusters = n)[[1]][2,1],100)
 
   expect_equal(length(unique(kmedians(X = A, num_clusters = n)[[2]])), 2)
 
-  expect_equal(kmedians(X = A, num_clusters = n)[[2]], c(1,1,1,2,2,2))
+  expect_equal(kmedians(X = A, num_clusters = n)[[2]],c(1,1,1,2,2,2))
 
 })
-

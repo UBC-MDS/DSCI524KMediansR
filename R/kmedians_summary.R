@@ -1,29 +1,47 @@
-distance <- function(X, medians){
-  # Calculates the Manhanttan distance between the medians and every point in the dataset
+#' @import tidyverse
+
+summary <- function(X, medians, labels){
+  # Generates a table to display the cluster labels, the coordinates of the cluster medians,
+  # number of points in each cluster, the average distance within the cluster,
+  # the maximum distance within the cluster and the minimum distance within the cluster.
+  #
   #
   # Parameters
   # ----------
-  # x: matrix
+  #
+  # X: matrix
   # The dataset being clustered
   #
   # medians: matrix
-  # Medians of the clusters
+  # Coordinates of each cluster median
+  #
+  # labels:  list
+  # Array with the assignment of the cluster for each point in the dataset
   #
   # Returns
   # -------
-  # dist: matrix
-  # Distance between each point and each median
+  # dataframe
+  # Returns a dataframe with 6 columns and number of rows will be the number of clusters. The labels of the columns:
+  # Cluster labels, Median Coordinates, Number of Points in Cluster, Average Distance, Minimum Distance, Maximum Distance
 
-  K <- nrow(medians)
-  n <- nrow(X)
+  medians_df <- data.frame(cbind(unique(labels),medians))
+  colnames(medians_df) <- c("label", "medianX", "medianY")
 
-  dist <- matrix(nrow=n,ncol=K)
+  summary_df <- data.frame(cbind(X,labels))
+  colnames(summary_df) <- c("X","Y","label")
 
-  for (k in 1:K) {
-    for (i in 1:n){
-      dist[i,k] <- abs(X[i,1]-medians[k,1])+abs(X[i,2]-medians[k,2])
-    }
-  }
+  summary_df <- summary_df %>%
+    dplyr::right_join(medians_df, by = 'label') %>%
+    dplyr::mutate(distance = (abs(X-medianX)+abs(Y-medianY))) %>%
+    dplyr::select(label, medianX, medianY, distance) %>%
+    dplyr::group_by(label) %>%
+    dplyr::summarise(medianX = unique(medianX), medianY = unique(medianY), num = n(), avgd = mean(distance), mind = min(distance), maxd = max(distance)) %>%
+    dplyr::mutate(med = paste(medianX, medianY, sep = ",")) %>%
+    dplyr::arrange(label) %>%
+    dplyr::select(label, med, num, avgd, mind, maxd)
 
-  return (dist)
-}
+  colnames(summary_df) <- c("Cluster Label","Median Coordinates",
+                            "Number of Points in Cluster","Average Distance",
+                            "Minimum Distance","Maximum Distance")
+
+  return

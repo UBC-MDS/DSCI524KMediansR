@@ -1,14 +1,11 @@
-# distance tests
-#
-# Testing includes:
-# - checks errors of the missing input
-# - checks errors of the datatype of the input
-# - checks the datatype of the output
-# - checks the size of the output
-# - correctly calculate the manhattan distance of the toy example
-
-
-library(KMediansR)
+#' distance tests
+#'
+#' Testing includes:
+#'  checks errors of the missing input
+#'  checks errors of the datatype of the input
+#'  checks the datatype of the output
+#'  checks the size of the output
+#'  correctly calculate the manhattan distance of the toy example
 
 context("testing manhattan distance")
 
@@ -93,4 +90,3 @@ test_that("test if the distance given toy data are right", {
   expect_equal(distance(X = A, medians = m)[,2], c(1,3,7))
 
 })
-

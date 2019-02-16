@@ -52,7 +52,7 @@ kmedians <- function(X, num_clusters,n_it=100){
     }
 
     for (k in 1:num_clusters){
-      medians[k,] = apply((matrix(X[u[k,]==1],ncol=2)), 2, median)
+      medians[k,] <- apply((matrix(X[u[k,]==1],ncol=2)), 2, median)
     }
 
     if (identical(medians,old_medians)){

@@ -51,5 +51,6 @@ Installation
 You can install the released version of KMediansR from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("KMediansR")
+library(devtools)
+install_github("UBC-MDS/KMediansR")
 ```

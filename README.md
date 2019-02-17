@@ -1,5 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<img src="R_badge.png" width="40%" />
+
 KMediansR
 =========
 

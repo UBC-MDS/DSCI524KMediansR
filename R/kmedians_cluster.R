@@ -37,13 +37,7 @@ kmedians <- function(X, num_clusters,n_it=100){
 
     old_medians <- medians
 
-    dist <- matrix(nrow=N,ncol=K)
-
-    for (k in 1:K) {
-      for (i in 1:n){
-        dist[i,k] <- abs(X[i,1]-medians[k,1])+abs(X[i,2]-medians[k,2])
-      }
-    }
+    dist <- distance(X, medians)
 
     labels <- apply(dist, 1, which.min)
 

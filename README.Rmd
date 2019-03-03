@@ -14,10 +14,9 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r pressure, echo=FALSE, out.width = '40%',  fig.pos = 'H'}
-knitr::include_graphics("R_badge.png")
+```{r pressure, echo=FALSE, out.width = '40%', fig.align='right'}
+knitr::include_graphics("img/R_badge.png")
 ```
-
 
 # KMediansR
 
@@ -29,17 +28,17 @@ The three main functions in the package are :
 
 1. `distance` function
 
-      - The function helps to calculate the Manhattan distance between each pair of the two collection inputs. This function takes as input 
+      - The function helps to calculate the Manhattan distance between each pair of the two collection inputs. This function takes as input
       1. An `mxn` array of `m` original observations in an `n`-dimensional space
       2. An `pxk` array of `p` original observations in an `k`-dimensional space
       It returns a `mxp` distance matrix. For each `i` and `j`, the mteric `distance(u=X[i], v=Y[j])` is computed and stored in the `ij`th entry
 
 2. `kmedian` function
 
-      - A quick implementation of k-medians. It takes as input 
+      - A quick implementation of k-medians. It takes as input
       1. A 2D array of data
       2. The desired number of clusters
-      It returns 
+      It returns
       1. A 2D array of the medians
       2. 1D array of labels (the clusters the points belongs to)
 
@@ -62,7 +61,7 @@ toy_data <- matrix(
   nrow = 6,
   ncol = 2,
   byrow = TRUE)
-  
+
 # initialize the cluster centers                                 
 m <- matrix(
   c(1,1,100,100),
@@ -102,7 +101,7 @@ report <- summary(X = toy_data, medians = clustered[[1]], labels = clustered[[2]
 
 # Existing packages in the R environment
 
-`kGmedian` : This is a fast k-medians clustering based on recursive averaged stochastic gradient algorithms. The advantage of the `kGmedian` algorithm compared to `kmeans` strategy is that it deals with sum of norms instead of sum of squared norms, ensuring a more robust behaviour against outlying values. 
+`kGmedian` : This is a fast k-medians clustering based on recursive averaged stochastic gradient algorithms. The advantage of the `kGmedian` algorithm compared to `kmeans` strategy is that it deals with sum of norms instead of sum of squared norms, ensuring a more robust behaviour against outlying values.
 
 # Subject to change
 

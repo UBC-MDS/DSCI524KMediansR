@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r pressure, echo=FALSE, out.width = '40%'}
+```{r pressure, echo=FALSE, out.width = '40%',  fig.pos = 'H'}
 knitr::include_graphics("R_badge.png")
 ```
 

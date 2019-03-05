@@ -112,5 +112,6 @@ Installation
 You can install the released version of KMediansR from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+library(magrittr)
 devtools::install_github("UBC-MDS/KMediansR")
 ```

@@ -21,44 +21,83 @@ Vignettes are long form documentation commonly included in packages. Because the
 - Has a smaller default figure size
 - Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
 
-## Vignette Info
+## KMediansR Info
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+The goal of KMediansR is to group a set of objects in such a way that objects in the same group (called a cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters). In k-medians clustering, we partition `n` observations into `k` clusters. It calculates the median for each cluster to determine its centroid. The `kmedians` package performs k-medians clustering on the dataset entered by the users and returns clustered data. This can prove to be an extremely beneficial package as k-medians is more robust to outliers than the arithmetic mean(k-means).
 
-## Styles
+# Functions included
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+The three main functions in the package are :
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+1. `distance` function
 
-## Figures
+      - The function helps to calculate the Manhattan distance between each pair of the two collection inputs. This function takes as input 
+      1. An `mxn` array of `m` original observations in an `n`-dimensional space
+      2. An `pxk` array of `p` original observations in an `k`-dimensional space
+      It returns a `mxp` distance matrix. For each `i` and `j`, the mteric `distance(u=X[i], v=Y[j])` is computed and stored in the `ij`th entry
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+2. `kmedian` function
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+      - A quick implementation of k-medians. It takes as input 
+      1. A 2D array of data
+      2. The desired number of clusters
+      It returns 
+      1. A 2D array of the medians
+      2. 1D array of labels (the clusters the points belongs to)
+
+3. `summary` function
+
+      - This function generates the descriptive statistics that summarize the implementation of the `kmedians` function on the input data. It returns a           dataframe that contains information about the model run such as the number of clusters, the number of points in each cluster, the inter and intra           cluster distance
+
+
+# Usage
+
+Simple example demonstrating the functionality of this package:
+
+``` r
+# load package
+library(KMediansR)
+
+# toy data with two clusters                    
+toy_data <- matrix(
+  c(1,1,1,2,2,1,100,100,101,100,100,101),
+  nrow = 6,
+  ncol = 2,
+  byrow = TRUE)
+  
+# initialize the cluster centers                                 
+m <- matrix(
+  c(1,1,100,100),
+  nrow = 2,
+  ncol = 2,
+  byrow = TRUE)
+
+# calculate Manhanttan distance between the medians and data points
+manhanttan_distance <- distance(X = toy_data, medians = m)
+
+     [,1] [,2]
+[1,]    0  198
+[2,]    1  197
+[3,]    1  197
+[4,]  198    0
+[5,]  199    1
+[6,]  199    1
+
+# cluster the data points                                        
+clustered <- kmedians(X = toy_data, num_clusters = 2)
+
+[[1]]
+     [,1] [,2]
+[1,]    1    1
+[2,]  100  100
+
+[[2]]
+[1] 1 1 1 2 2 2
+
+# generate summary results                                       
+report <- summary(X = toy_data, medians = clustered[[1]], labels = clustered[[2]])
+
+  Cluster.Label Median.Coordinates Number.of.Points.in.Cluster Average.Distance  Minimum.Distance Maximum.Distance
+1             1                1,1                           3        0.6666667                 0                1
+2             2            100,100                           3        0.6666667                 0                1
 ```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))

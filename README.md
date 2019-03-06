@@ -5,7 +5,7 @@
 KMediansR
 =========
 
-[![Build Status](https://travis-ci.org/panntingg/KMediansR.svg?branch=master)](https://travis-ci.org/panntingg/KMediansR)
+[![Build Status](https://travis-ci.org/UBC-MDS/KMediansR.svg?branch=master)](https://travis-ci.org/UBC-MDS/KMediansR)
 
 The goal of KMediansR is to group a set of objects in such a way that objects in the same group (called a cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters). In k-medians clustering, we partition `n` observations into `k` clusters. It calculates the median for each cluster to determine its centroid. The `kmedians` package performs k-medians clustering on the dataset entered by the users and returns clustered data. This can prove to be an extremely beneficial package as k-medians is more robust to outliers than the arithmetic mean(k-means).
 
@@ -112,5 +112,6 @@ Installation
 You can install the released version of KMediansR from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+library(magrittr)
 devtools::install_github("UBC-MDS/KMediansR")
 ```

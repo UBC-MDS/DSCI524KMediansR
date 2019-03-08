@@ -23,6 +23,16 @@
 #'
 kmedians <- function(X, num_clusters,n_it=100){
 
+  # Check that inputs are valid and as expected
+  if(!is.matrix(X)) return("Input X should be a matrix!")
+
+  if(round(num_clusters)!=num_clusters) return("Input number of clusters should be an integer!")
+
+  if(round(n_it)!=n_it) return("Input number of iterations should be an integer!")
+
+  if((nrow(X)+ncol(X))  <= num_clusters) return("Too many initial cluster centers!")
+
+
   set.seed(123)
   n <- nrow(X)
   u <- matrix(0, nrow = num_clusters, ncol = n)

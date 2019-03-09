@@ -24,11 +24,11 @@ test_that("missing input errors", {
 
   expect_error(kmedians(X = NULL, num_clusters = n),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(kmedians(X = A, num_clusters = NULL),
 
-               'non-numeric matrix extent')
+               'non-numeric argument to mathematical function')
 
 })
 
@@ -37,23 +37,23 @@ test_that("datatype errors", {
 
   expect_error(kmedians(X = "abcd", num_clusters = n),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(kmedians(X = 100, num_clusters = n),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(kmedians(X = c(1,2), num_clusters = n),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(kmedians(X = A, num_clusters = 1.5),
 
-               'non-numeric matrix extent')
+               'Input number of clusters should be an integer!')
 
   expect_error(kmedians(X = A, num_clusters = "2"),
 
-               'non-numeric matrix extent')
+               'non-numeric argument to mathematical function')
 
   expect_error(kmedians(X = A, num_clusters = 0),
 

@@ -25,11 +25,11 @@ test_that("missing input errors", {
 
   expect_error(distance(X = NULL, medians = m),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(distance(X = A, medians = NULL),
 
-               'non-numeric matrix extent')
+               'Input medians should be a matrix!')
 
 })
 
@@ -37,35 +37,35 @@ test_that("datatype errors", {
 
   expect_error(distance(X = "abcd", medians = m),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(distance(X = 100, medians = m),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(distance(X = c(1,2), medians = m),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(distance(X = list(c(1,2)), medians = m),
 
-               'non-numeric matrix extent')
+               'Input X should be a matrix!')
 
   expect_error(distance(X = A, medians = "abcd"),
 
-               'non-numeric matrix extent')
+               'Input medians should be a matrix!')
 
   expect_error(distance(X = A, medians = 100),
 
-               'non-numeric matrix extent')
+               'Input medians should be a matrix!')
 
   expect_error(distance(X = A, medians = c(1,2)),
 
-               'non-numeric matrix extent')
+               'Input medians should be a matrix!')
 
   expect_error(distance(X = A, medians = list(c(1,2)),
 
-               'non-numeric matrix extent'))
+               'Input medians should be a matrix!'))
 
 })
 

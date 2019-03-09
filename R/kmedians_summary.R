@@ -16,6 +16,18 @@
 #'
 summary <- function(X, medians, labels){
 
+  # Check that inputs are valid and as expected
+  if(!is.matrix(X)) stop("Input X should be a matrix!")
+
+  if(!is.matrix(medians)) stop ("Input medians should be a matrix!")
+
+  if(!is.vector(labels)) stop ("Input labels should be a vector!")
+
+  if((nrow(X)  < nrow(medians))) stop ("Too many kmedians cluster centers!")
+
+  if((nrow(medians) < length(unique(labels)))) stop ("Number of kmedians cluster centers do NOT equal to the number of clusters!")
+
+
   medians_df <- data.frame(cbind(unique(labels),medians))
   colnames(medians_df) <- c("label", "medianX", "medianY")
 

@@ -23,6 +23,20 @@
 #'
 kmedians <- function(X, num_clusters,n_it=100){
 
+  # Check that inputs are valid and as expected
+  if(!is.matrix(X)) stop ("Input X should be a matrix!")
+
+  if(round(num_clusters)!=num_clusters) stop ("Input number of clusters should be an integer!")
+
+  if(is.character(num_clusters)) stop ("non-numeric argument to mathematical function")
+
+  if(is.null(num_clusters)) stop ("non-numeric argument to mathematical function")
+
+  if(round(n_it)!=n_it) stop ("Input number of iterations should be an integer!")
+
+  if((nrow(X)  <= num_clusters)) stop ("cannot take a sample larger than the population when 'replace = FALSE'")
+
+
   set.seed(123)
   n <- nrow(X)
   u <- matrix(0, nrow = num_clusters, ncol = n)

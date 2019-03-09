@@ -21,7 +21,18 @@
 #'  byrow = TRUE)
 #' distance(A,m)
 #'
+
+
+
+
 distance <- function(X, medians){
+
+  # Check that inputs are valid and as expected
+  if(!is.matrix(X)) stop("Input X should be a matrix!")
+
+  if(!is.matrix(medians)) stop("Input medians should be a matrix!")
+
+  if(nrow(X)  < (nrow(medians))) stop("non-numeric matrix extent")
 
   K = nrow(medians)
   n = nrow(X)
